@@ -36,7 +36,7 @@ Jenkins installation
 
 Jenkins Setup
 
-Add Repository key to the system
+Add Repository key to the system. Below is command to download key to ubuntu system.
 
 wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
 
