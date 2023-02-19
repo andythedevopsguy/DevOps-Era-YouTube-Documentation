@@ -1,0 +1,63 @@
+Apache Tomcat is a free and open-source implementation of the Jakarta Servlet, Jakarta Expression Language, and WebSocket technologies. It provides a "pure Java" HTTP web server environment in which Java code can also run. Thus it is a Java web application server, although not a full JEE application server. 
+Tomcat is a web server or web container where java web application can be deployed by developers
+
+
+Please follow below steps to install Tomcat 9 on Ubuntu 18.0.4.
+
+Pre-requistes:
+Make sure you create brand new EC2 instance first for setting up Tomcat. Click here to learn how to create EC2.
+Also open port 8080 in security firewall rules for EC2 instance in AWS
+
+Tomcat Installation
+
+Pre-requistes:
+EC2 instance should be up and running with port 8080 as open in security rules
+
+Tomcat Installation
+
+Step 1:
+Change Host Name to Tomcat
+sudo hostnamectl set-hostname Tomcat
+
+Step 2:
+Install Tomcat9
+sudo apt-get install tomcat9 tomcat9-docs tomcat9-admin –y
+
+Step 3:
+
+Perform below command for setting up tomcat admin app
+sudo cp -r /usr/share/tomcat9-admin/* /var/lib/tomcat9/webapps/ -v
+
+Step 4 :
+Setup an user in tomcat 
+Open the tomcat-users.xml file by executing below command
+sudo vi /var/lib/tomcat9/conf/tomcat-users.xml
+
+You need to edit the file 
+We need to add tomcat user and assign to manager-script role.
+Scroll down all the way to the end of the file,
+Add the below lines in second last line above (above </tomcat-users>)
+
+<role rolename="manager-script"/>
+<user username="tomcat" password="password" roles="manager-script"/>
+ 
+
+Step 5:
+Restart tomcat 
+
+sudo systemctl restart tomcat9
+
+Step 6:
+Check tomcat status
+
+sudo systemctl status tomcat9
+
+Now press q for quitting from that window. 
+
+Step 7:
+
+Now open the browser to access Tomcat, enter
+http://Ec2_public_dns_name:8080
+
+You should see a page that says : It works
+
