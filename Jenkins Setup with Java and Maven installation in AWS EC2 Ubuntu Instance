@@ -44,6 +44,9 @@ wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
 Append debian package repo address to the system
 echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
 
+update Ubuntu Package :
+
+sudo apt update
 
 Install Jenkins
 sudo apt install jenkins -y
