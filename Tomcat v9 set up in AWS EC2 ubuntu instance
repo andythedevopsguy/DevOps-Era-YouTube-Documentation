@@ -23,7 +23,7 @@ sudo apt update
 
 Step 2:
 Install Tomcat9
-sudo apt-get install tomcat9 tomcat9-docs tomcat9-admin –y
+sudo apt-get install tomcat9 tomcat9-docs tomcat9-admin -y
 
 Step 3:
 
