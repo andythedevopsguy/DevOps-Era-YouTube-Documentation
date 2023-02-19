@@ -16,8 +16,10 @@ EC2 instance should be up and running with port 8080 as open in security rules
 Tomcat Installation
 
 Step 1:
-Change Host Name to Tomcat
+Change Host Name to Tomcat and update to latest packages
 sudo hostnamectl set-hostname Tomcat
+
+sudo apt update
 
 Step 2:
 Install Tomcat9
