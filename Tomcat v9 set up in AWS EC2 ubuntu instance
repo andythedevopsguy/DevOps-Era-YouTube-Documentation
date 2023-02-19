@@ -5,7 +5,7 @@ Tomcat is a web server or web container where java web application can be deploy
 Please follow below steps to install Tomcat 9 on Ubuntu 18.0.4.
 
 Pre-requistes:
-Make sure you create brand new EC2 instance first for setting up Tomcat. Click here to learn how to create EC2.
+Make sure you create brand new EC2 instance first for setting up Tomcat. 
 Also open port 8080 in security firewall rules for EC2 instance in AWS
 
 Tomcat Installation
