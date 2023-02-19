@@ -1,0 +1,69 @@
+Step 1: Connect to EC-2 instance
+
+Step 2: 
+Change Host Name to Jenkins
+
+sudo hostnamectl set-hostname Jenkins
+Step 3:
+
+Perform update 
+
+
+sudo apt update
+
+Step 4:
+
+Install Java 11 and verify
+
+sudo apt install default-jdk -y
+
+java -version
+
+
+Step 5:
+
+Maven Installation and verify
+
+sudo apt install maven -y
+
+mvn --version
+
+
+
+Step 6:
+
+Jenkins installation
+
+Jenkins Setup
+
+Add Repository key to the system
+
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+
+
+Append debian package repo address to the system
+echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+
+
+Install Jenkins
+sudo apt install jenkins -y
+
+
+Step 7 :
+Access Jenkins in web browser
+
+1. Go to AWS console. 
+2. Click on EC2, click on running instances link. Select the checkbox of EC2 you are installing Java and Jenkins. Click on Action. Copy the value from step 4 that says --> Connect to your instance using its Public DNS:
+3. Now go to browser. enter public dns name or public IP address with port no 8080.
+http:// dns_name:8080
+
+4. Unlock Jenkins. You may get screen, enter the below command in Git bash( Ubuntu console)
+
+Follow the instruction to get initial password from the below file
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+5. Copy the password and paste in the browser and click on install suggested plug-ins. 
+
+6. Create user name and password.
+
+Jenkins is successfully setup!
