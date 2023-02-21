@@ -19,3 +19,10 @@ Topics covered in this session:
 
 1.	YAML Comments and key value pair
 Space after colon is mandatory to differentiate key and value
+
+2. Dictionary
+Set of properties grouped together after an item
+Equal amount of blank space required for all the items under a dictionary
+
+3: Array / Lists
+Dash indicates an element of an array
