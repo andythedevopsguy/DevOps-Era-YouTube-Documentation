@@ -1,0 +1,21 @@
+YAML is a human-readable data-serialization language. It is commonly used for configuration files and in applications where data is being stored or transmitted.
+
+Yaml is not a Markup language
+Yaml is used to store information about different things.
+We can use yaml to define key value pairs like variables, lists and objects
+Yaml is similar to JSON (Javascript Object Notation)
+Yaml primarily focuses on readability and user friendliness
+Yaml is designed to be clean and easy to read
+We can define YAML files with two different extensions
+	Abc.yml
+	Abc.yaml
+
+Topics covered in this session:
+
+1.	Yaml Comments and key value pairs
+2.	Yaml Dictionary
+3.	Array / Lists
+4.	Multiple Lists
+
+1.	YAML Comments and key value pair
+Space after colon is mandatory to differentiate key and value
