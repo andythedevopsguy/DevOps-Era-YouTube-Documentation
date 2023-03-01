@@ -74,7 +74,7 @@ volumes:
 11.	Bring up the container and postgresql by giving below command : 
 sudo docker-compose up -d
 12.	Aggregate the output of container :
-docker compose logs –follow
+sudo docker-compose logs --follow
 We should see message in logs that says Sonaqube is up and running
 
 
