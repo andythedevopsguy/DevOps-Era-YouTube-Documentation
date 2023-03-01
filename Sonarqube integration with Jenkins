@@ -1,0 +1,87 @@
+SonarQube
+SonarQube is static code analyis tool. It is open source and Java based tool.
+Sonarqube is primarily used to :
+
+•	Discover security vulnerabilities in your source code
+•	Discover application bugs in your source code
+•	Display the historical Unit Test case coverage numbers
+
+It is important for continuous building, continuous testing and continuous security that every commit to Github results in 
+•	A Build with Unit Tests
+•	A Sonar Scan
+
+
+Steps to install SonarQube in AWS EC2 instances are as follows :
+Pre-requisite : Jenkins instance should be up and running
+1.	Create EC2 instance in AWS
+2.	Add security rule to open port 9000
+3.	Login to EC2 instance 
+4.	Open sysctl.conf to configure mapped memory and number of file-handles
+sudo vi /etc/sysctl.conf
+
+Add the following lines to the bottom of that file:
+
+vm.max_map_count=262144
+fs.file-max=65536
+
+Note :
+vm. max_map_count is a Linux kernel parameter that defines the maximum count of mapped memory regions allowed in the system
+
+The file-max file /proc/sys/fs/file-max sets the maximum number of file-handles that the Linux kernel will allocate.
+
+5.	Verify changes made in above step: sudo sysctl –p
+6.	Change hostname to SonarQube: sudo hostnamectl set-hostname SonarQube
+7.	Update system after making above changes : sudo apt-get update
+8.	Installing Docker Compose in Ubuntu : sudo apt-get install docker-compose –y
+9.	Add current user to docker group: sudo usermod -aG docker $USER
+10.	Create and open docker-compose.yml in vi editor . This yml will have configuration for installing both SonarQube and Postgresql :
+sudo vi docker-compose.yml
+Add below code in docker-compose.yml and save it
+
+version: "3"
+services:
+  sonarqube:
+    image: sonarqube:community
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonar
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    ports:
+      - "9000:9000"
+  db:
+    image: postgres:12
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  postgresql:
+  postgresql_data:
+
+11.	Bring up the container and postgresql by giving below command : 
+sudo docker-compose up -d
+12.	Aggregate the output of container :
+docker compose logs –follow
+We should see message in logs that says Sonaqube is up and running
+
+
+Integrating Sonaqube with Jenkins 
+
+
+Pre-requisites:
+•	Make sure SonarQube is up and running
+•	Make sure Sonarqube plug-in installed in Jenkins.
+
